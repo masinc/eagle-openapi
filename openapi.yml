@@ -1,0 +1,997 @@
+openapi: "3.0.2"
+info:
+  title: Eagle API
+  version: "0.1.0 and Eagle 1.11 Build35"
+  contact:
+    name: Eagle Api Document
+    url: https://api.eagle.cool/
+servers:
+  - url: http://localhost:41595
+paths:
+  /api/application/info:
+    get:
+      operationId: getApplicationInfo
+      summary: Return Eagle application information
+      externalDocs:
+        url: https://api.eagle.cool/application/info
+      tags:
+        - application
+      responses:
+        "200":
+          description: Ok
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ApplicationInfoResult"
+
+  /api/folder/create:
+    post:
+      operationId: createFolder
+      summary: Create a folder
+      externalDocs:
+        url: https://api.eagle.cool/folder/create
+      tags:
+        - folder
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/CreateFolderParams"
+      responses:
+        "200":
+          description: Ok
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/CreateFolderResult"
+  /api/folder/rename:
+    post:
+      operationId: renameFolder
+      summary: Rename a folder
+      externalDocs:
+        url: https://api.eagle.cool/folder/rename
+      tags:
+        - folder
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/RenameFolderParams"
+      responses:
+        "200":
+          description: Ok
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/RenameFolderResult"
+  /api/folder/list:
+    get:
+      operationId: listFolder
+      summary: Get the folder list
+      externalDocs:
+        url: https://api.eagle.cool/folder/list
+      tags:
+        - folder
+      responses:
+        "200":
+          description: Ok
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ListFolderResult"
+  /api/folder/listRecent:
+    get:
+      operationId: listRecentFolder
+      summary: Get the folder list recently used by the user
+      externalDocs:
+        url: https://api.eagle.cool/folder/list-recent
+      tags:
+        - folder
+      responses:
+        "200":
+          description: Ok
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ListRecentFolderResult"
+  /api/item/addFromURL:
+    post:
+      operationId: addFromUrl
+      summary: Add an image from an address
+      externalDocs:
+        url: https://api.eagle.cool/item/add-from-url
+      tags:
+        - item
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/AddFromUrlParams"
+      responses:
+        "200":
+          description: Ok
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/AddFromUrlResult"
+  /api/item/addFromURLs:
+    post:
+      operationId: addFromUrls
+      summary: Add multiple images from the addresses
+      externalDocs:
+        url: https://api.eagle.cool/item/add-from-urls
+      tags:
+        - item
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/AddFromUrlsParams"
+      responses:
+        "200":
+          description: Ok
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/AddFromUrlsResult"
+  /api/item/addFromPath:
+    post:
+      operationId: addFromPath
+      summary: Add a local file
+      externalDocs:
+        url: https://api.eagle.cool/item/add-from-path
+      tags:
+        - item
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/AddFromPathParams"
+      responses:
+        "200":
+          description: Ok
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/AddFromPathResult"
+  /api/item/addFromPaths:
+    post:
+      operationId: addFromPaths
+      summary: Add multiple local files
+      externalDocs:
+        url: https://api.eagle.cool/item/add-from-paths
+      tags:
+        - item
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/AddFromPathsParams"
+      responses:
+        "200":
+          description: Ok
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/AddFromPathsResult"
+  /api/item/addBookmark:
+    post:
+      operationId: addBookmark
+      summary: Save the link in the URL
+      externalDocs:
+        url: https://api.eagle.cool/item/add-bookmark
+      tags:
+        - item
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/AddBookmarkParams"
+      responses:
+        "200":
+          description: Ok
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/AddBookmarkResult"
+  /api/item/info:
+    get:
+      operationId: getItemInfo
+      summary: Get properties of a file
+      externalDocs:
+        url: https://api.eagle.cool/item/info
+      tags:
+        - item
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ItemInfoParams"
+      responses:
+        "200":
+          description: Ok
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ItemInfoResult"
+  /api/item/thumbnail:
+    get:
+      operationId: getThumbnail
+      summary: Get thumbnail of a file
+      externalDocs:
+        url: https://api.eagle.cool/item/thumbnail
+      tags:
+        - item
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ItemThumbnailParams"
+      responses:
+        "200":
+          description: Ok
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ItemThumbnailResult"
+  /api/item/list:
+    get:
+      operationId: getItemList
+      summary: Get items that match the filter condition
+      externalDocs:
+        url: https://api.eagle.cool/item/list
+      tags:
+        - item
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ItemListParams"
+      responses:
+        "200":
+          description: Ok
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ItemListResult"
+  /api/item/refreshPalette:
+    post:
+      summary: Reanalysis the color of a file
+      operationId: refreshPalette
+      externalDocs:
+        url: https://api.eagle.cool/item/refresh-palette
+      tags:
+        - item
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/RefreshPaletteParams"
+      responses:
+        "200":
+          description: Ok
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/RefreshPaletteResult"
+  /api/item/refreshThumbnail:
+    post:
+      operationId: refreshThumbnail
+      summary: Regenerate the thumbnail of a file
+      externalDocs:
+        url: https://api.eagle.cool/item/refresh-thumbnail
+      tags:
+        - item
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/RefreshThumbnailParams"
+      responses:
+        "200":
+          description: Ok
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/RefreshThumbnailResult"
+  /api/item/update:
+    post:
+      operationId: updateItem
+      summary: Modify data of a item
+      externalDocs:
+        url: https://api.eagle.cool/item/update
+      tags:
+        - item
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/RefreshThumbnailParams"
+      responses:
+        "200":
+          description: Ok
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/RefreshThumbnailResult"
+  /api/library/info:
+    get:
+      operationId: getLibraryInfo
+      summary: Get information details of a library
+      externalDocs:
+        url: https://api.eagle.cool/library/info
+      tags:
+        - library
+      responses:
+        "200":
+          description: Ok
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/LibraryInfoResult"
+  /api/library/history:
+    get:
+      operationId: getLibraryHistory
+      summary: Get the list of libraries recently opened
+      externalDocs:
+        url: https://api.eagle.cool/library/history
+      tags:
+        - library
+      responses:
+        "200":
+          description: Ok
+  /api/library/switch:
+    post:
+      operationId: switchLibrary
+      summary: Switch the library currently opened
+      externalDocs:
+        url: https://api.eagle.cool/library/switch
+      tags:
+        - library
+      responses:
+        "200":
+          description: Ok
+components:
+  schemas:
+    Tags:
+      type: array
+      items:
+        type: string
+    Folders:
+      type: array
+      items:
+        type: string
+    Styles:
+      type: object
+      properties:
+        depth:
+          type: integer
+        first:
+          type: boolean
+        last:
+          type: boolean
+    Color:
+      type: array
+      items:
+        type: integer
+      minItems: 3
+      maxItems: 3
+    Palette:
+      type: object
+      properties:
+        color:
+          $ref: "#/components/schemas/Color"
+        ratio:
+          type: integer
+    Palettes:
+      type: array
+      items:
+        $ref: "#/components/schemas/Palette"
+    ApplicationInfoResult:
+      description: Eagle application information
+      type: object
+      properties:
+        status:
+          type: string
+        data:
+          $ref: "#/components/schemas/ApplicationInfoData"
+    ApplicationInfoData:
+      type: object
+      properties:
+        version:
+          type: string
+        prereleaseVersion:
+          type: string
+          nullable: true
+        buildVersion:
+          type: string
+        execPath:
+          type: string
+        platform:
+          type: string
+    CreateFolderParams:
+      type: object
+      properties:
+        folderName:
+          type: string
+      required:
+        - folderName
+    CreateFolderResult:
+      type: object
+      properties:
+        status:
+          type: string
+        data:
+          $ref: "#/components/schemas/CreateFolderData"
+    CreateFolderData:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        images:
+          type: array
+          items:
+            type: object
+        folders:
+          $ref: "#/components/schemas/Folders"
+        modificationTime:
+          type: integer
+        imagesMappings:
+          type: object
+        tags:
+          $ref: "#/components/schemas/Tags"
+        children:
+          type: array
+          items:
+            type: object
+        isExpand:
+          type: boolean
+    RenameFolderParams:
+      type: object
+      properties:
+        folderId:
+          type: string
+        folderName:
+          type: string
+      required:
+        - folderId
+        - folderName
+    RenameFolderResult:
+      type: object
+      properties:
+        status:
+          type: string
+        data:
+          $ref: "#/components/schemas/RenameFolderData"
+    RenameFolderData:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        images:
+          type: array
+          items:
+            type: object
+        folders:
+          $ref: "#/components/schemas/Folders"
+        modificationTime:
+          type: integer
+        imagesMappings:
+          type: object
+        tags:
+          $ref: "#/components/schemas/Tags"
+        children:
+          type: array
+          items:
+            type: object
+        isExpand:
+          type: boolean
+        size:
+          type: integer
+        vstype:
+          type: string
+    ListFolderResult:
+      type: object
+      properties:
+        status:
+          type: string
+        data:
+          type: array
+          items:
+            $ref: "#/components/schemas/ListFolderData"
+    ListFolderData:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        description:
+          type: string
+        children:
+          type: array
+          items:
+            type: object
+        modificationTime:
+          type: integer
+        tags:
+          $ref: "#/components/schemas/Tags"
+        imageCount:
+          type: integer
+        descendantImageCount:
+          type: integer
+        pinyin:
+          type: string
+        extendTags:
+          $ref: "#/components/schemas/Tags"
+    ListRecentFolderResult:
+      type: object
+      properties:
+        status:
+          type: string
+        data:
+          type: array
+          items:
+            $ref: "#/components/schemas/ListRecentFolderData"
+    ListRecentFolderData:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        description:
+          type: string
+        children:
+          type: array
+          items:
+            type: object
+        modificationTime:
+          type: integer
+        tags:
+          $ref: "#/components/schemas/Tags"
+        password:
+          type: string
+        passwordTips:
+          type: string
+        images:
+          type: array
+          items:
+            type: object
+        isExpand:
+          type: boolean
+        newFolderName:
+          type: string
+        imagesMappings:
+          type: object
+        imageCount:
+          type: integer
+        descendantImageCount:
+          type: integer
+        pinyin:
+          type: string
+        extendTags:
+          $ref: "#/components/schemas/Tags"
+    AddFromUrlParams:
+      type: object
+      properties:
+        url:
+          type: string
+        name:
+          type: string
+        website:
+          type: string
+        tags:
+          $ref: "#/components/schemas/Tags"
+        annotation:
+          type: string
+        modificationTime:
+          type: integer
+        folderId:
+          type: string
+        headers:
+          type: object
+      required:
+        - url
+        - name
+    AddFromUrlResult:
+      type: object
+      properties:
+        status:
+          type: string
+    AddFromUrlsParams:
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: "#/components/schemas/AddFromUrlsParamsItem"
+        folderId:
+          type: string
+      required:
+        - items
+        - folderId
+    AddFromUrlsParamsItem:
+      type: object
+      properties:
+        url:
+          type: string
+        name:
+          type: string
+        website:
+          type: string
+        tags:
+          $ref: "#/components/schemas/Tags"
+        annotation:
+          type: string
+        modificationTime:
+          type: integer
+        headers:
+          type: object
+      required:
+        - url
+        - name
+    AddFromUrlsResult:
+      type: object
+      properties:
+        status:
+          type: string
+    AddFromPathParams:
+      type: object
+      properties:
+        path:
+          type: string
+        name:
+          type: string
+        website:
+          type: string
+        annotation:
+          type: string
+        tags:
+          $ref: "#/components/schemas/Tags"
+        folderId:
+          type: string
+      required:
+        - path
+        - name
+    AddFromPathResult:
+      type: object
+      properties:
+        status:
+          type: string
+    AddFromPathsParams:
+      type: object
+      properties:
+        path:
+          type: string
+        name:
+          type: string
+        website:
+          type: string
+        annotation:
+          type: string
+        tags:
+          $ref: "#/components/schemas/Tags"
+        folderId:
+          type: string
+      required:
+        - path
+        - name
+    AddFromPathsResult:
+      type: object
+      properties:
+        status:
+          type: string
+    AddBookmarkParams:
+      type: object
+      properties:
+        url:
+          type: string
+        name:
+          type: string
+        base64:
+          type: string
+        tags:
+          $ref: "#/components/schemas/Tags"
+        folderId:
+          type: string
+      required:
+        - url
+        - name
+    AddBookmarkResult:
+      type: object
+      properties:
+        status:
+          type: string
+    ItemInfoParams:
+      type: object
+      properties:
+        id:
+          type: string
+      required:
+        - id
+    ItemInfoResult:
+      type: object
+      properties:
+        status:
+          type: string
+        data:
+          $ref: "#/components/schemas/ItemInfoData"
+    ItemInfoData:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        size:
+          type: integer
+        ext:
+          type: string
+        tags:
+          $ref: "#/components/schemas/Tags"
+        folders:
+          $ref: "#/components/schemas/Folders"
+        isDeleted:
+          type: boolean
+        url:
+          type: string
+        annotation:
+          type: string
+        modificationTime:
+          type: integer
+        width:
+          type: integer
+        height:
+          type: integer
+        noThumbnail:
+          type: boolean
+        lastModified:
+          type: integer
+        palettes:
+          $ref: "#/components/schemas/Palettes"
+    ItemThumbnailParams:
+      type: object
+      properties:
+        id:
+          type: string
+      required:
+        - id
+    ItemThumbnailResult:
+      type: object
+      properties:
+        status:
+          type: string
+        data:
+          type: string
+    ItemListParams:
+      type: object
+      properties:
+        limit:
+          type: integer
+        orderBy:
+          type: string
+        keyword:
+          type: string
+        ext:
+          type: string
+        tags:
+          $ref: "#/components/schemas/Tags"
+        folders:
+          type: string
+    ItemListResult:
+      type: object
+      properties:
+        status:
+          type: string
+        data:
+          $ref: "#/components/schemas/ItemListData"
+    ItemListData:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        size:
+          type: integer
+        ext:
+          type: string
+        tags:
+          $ref: "#/components/schemas/Tags"
+        isDeleted:
+          type: boolean
+        url:
+          type: string
+        annotation:
+          type: string
+        modificationTime:
+          type: integer
+        height:
+          type: integer
+        width:
+          type: integer
+        lastModified:
+          type: integer
+        palettes:
+          $ref: "#/components/schemas/Palettes"
+    RefreshPaletteParams:
+      type: object
+      properties:
+        id:
+          type: string
+      required:
+        - id
+    RefreshPaletteResult:
+      type: object
+      properties:
+        status:
+          type: string
+    RefreshThumbnailParams:
+      type: object
+      properties:
+        id:
+          type: string
+      required:
+        - id
+    RefreshThumbnailResult:
+      type: object
+      properties:
+        status:
+          type: string
+    UpdateItemParams:
+      type: object
+      properties:
+        id:
+          type: string
+        tags:
+          $ref: "#/components/schemas/Tags"
+        annotation:
+          type: string
+        url:
+          type: string
+        star:
+          type: integer
+      required:
+        - id
+    UpdateItemResult:
+      type: object
+      properties:
+        status:
+          type: string
+        data:
+          $ref: "#/components/schemas/UpdateItemData"
+    UpdateItemData:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        size:
+          type: integer
+        ext:
+          type: string
+        tags:
+          $ref: "#/components/schemas/Tags"
+        folders:
+          $ref: "#/components/schemas/Folders"
+        isDeleted:
+          type: boolean
+        url:
+          type: string
+        annotation:
+          type: string
+        modificationTime:
+          type: integer
+        width:
+          type: integer
+        height:
+          type: integer
+        noThumbnail:
+          type: boolean
+        lastModified:
+          type: number
+        palettes:
+          $ref: "#/components/schemas/Palettes"
+        star:
+          type: number
+    LibraryInfoResult:
+      type: object
+      properties:
+        status:
+          type: string
+        data:
+          $ref: "#/components/schemas/LibraryInfoData"
+    LibraryInfoData:
+      type: object
+      properties:
+        folders:
+          type: array
+          items:
+            $ref: "#/components/schemas/LibraryInfoFolder"
+        smartFolders:
+          type: array
+          items:
+            $ref: "#/components/schemas/LibraryInfoSmartFolder"
+    LibraryInfoFolder:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        description:
+          type: string
+        children:
+          type: array
+          items:
+            $ref: "#/components/schemas/LibraryInfoFolder"
+        modificationTime:
+          type: integer
+        tags:
+          $ref: "#/components/schemas/Tags"
+        iconColor:
+          type: string
+        password:
+          type: string
+        passwordTips:
+          type: string
+    LibraryInfoSmartFolder:
+      type: object
+      properties:
+        id:
+          type: string
+        icon:
+          type: string
+        name:
+          type: string
+        description:
+          type: string
+        modificationTime:
+          type: integer
+        conditions:
+          type: array
+          items:
+            $ref: "#/components/schemas/LibraryInfoSmartFolderCondition"
+        orderBy:
+          type: string
+        sortIncrease:
+          type: boolean
+    LibraryInfoSmartFolderCondition:
+      type: object
+      properties:
+        match:
+          type: string
+        rules:
+          type: array
+          items:
+            $ref: "#/components/schemas/LibraryInfoSmartFolderConditionRule"
+    LibraryInfoSmartFolderConditionRule:
+      type: object
+      properties:
+        method:
+          type: string
+        property:
+          type: string
+        value:
+          anyOf:
+            - type: object
+            - type: string
+            - type: integer

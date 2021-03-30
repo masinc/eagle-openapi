@@ -1,0 +1,26 @@
+{
+  "name": "eagle-openapi",
+  "version": "0.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "openapi-generator-cli",
+    "clean": "rimraf out/",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/masinc/eagle-openapi.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/masinc/eagle-openapi/issues"
+  },
+  "homepage": "https://github.com/masinc/eagle-openapi#readme",
+  "devDependencies": {
+    "@openapitools/openapi-generator-cli": "^2.2.3",
+    "rimraf": "^3.0.2"
+  }
+}
