@@ -991,7 +991,4 @@ components:
         property:
           type: string
         value:
-          anyOf:
-            - type: object
-            - type: string
-            - type: integer
+          type: object
