@@ -349,9 +349,19 @@ paths:
         url: https://api.eagle.cool/library/history
       tags:
         - library
+      requestBody:
+        # required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/LibrarySwitchRequest"
       responses:
         "200":
           description: Ok
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/LibraryHistoryResult"
   /api/library/switch:
     post:
       operationId: switchLibrary
@@ -363,6 +373,10 @@ paths:
       responses:
         "200":
           description: Ok
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/LibrarySwitchResponse"
 components:
   schemas:
     Tags:
@@ -930,6 +944,18 @@ components:
           type: array
           items:
             $ref: "#/components/schemas/LibraryInfoSmartFolder"
+        quickAccess:
+          type: array
+          items:
+            $ref: "#/components/schemas/LibraryInfoQuickAccess"
+        tagsGroups:
+          type: array
+          items:
+            $ref: "#/components/schemas/LibraryInfoTagGroup"
+        modificationTime:
+          type: integer
+        applicationVersion:
+          type: string
     LibraryInfoFolder:
       type: object
       properties:
@@ -992,3 +1018,40 @@ components:
           type: string
         value:
           type: object
+    LibraryInfoQuickAccess:
+      type: object
+      properties:
+        type:
+          type: string
+        id:
+          type: string
+    LibraryInfoTagGroup:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        tags:
+          $ref: "#/components/schemas/Tags"
+        color:
+          $ref: "#/components/schemas/Color"
+    LibraryHistoryResult:
+      type: object
+      properties:
+        status:
+          type: string
+        data:
+          type: array
+          items:
+            type: string
+    LibrarySwitchRequest:
+      type: object
+      properties:
+        libraryPath:
+          type: string
+    LibrarySwitchResponse:
+      type: object
+      properties:
+        status:
+          type: string
