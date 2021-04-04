@@ -66,6 +66,27 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/RenameFolderResult"
+  /api/folder/update:
+    post:
+      operationId: updateFolder
+      summary: update the folder
+      externalDocs:
+        url: https://api.eagle.cool/folder/update
+      tags:
+        - folder
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/UpdateFolderParams"
+      responses:
+        "200":
+          description: Ok
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/UpdateFolderResult"
   /api/folder/list:
     get:
       operationId: listFolder
@@ -520,6 +541,45 @@ components:
           type: integer
         vstype:
           type: string
+    UpdateFolderParams:
+      type: object
+      properties:
+        folderId:
+          type: string
+        newName:
+          type: string
+        newDescription:
+          type: string
+        newColor:
+          $ref: "#/components/schemas/UpdateFolderColor"
+      required:
+        - folderId
+    UpdateFolderColor:
+      type: string
+      enum:
+        - red
+        - orange
+        - green
+        - yellow
+        - aqua
+        - blue
+        - purple
+        - pink
+    UpdateFolderResult:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        description:
+          type: string
+        image:
+          type: array
+          items:
+            type: object
+        folders:
+          $ref: "#/components/schemas/Folders"
     ListFolderResult:
       type: object
       properties:
