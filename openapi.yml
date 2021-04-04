@@ -349,12 +349,6 @@ paths:
         url: https://api.eagle.cool/library/history
       tags:
         - library
-      requestBody:
-        # required: true
-        content:
-          application/json:
-            schema:
-              $ref: "#/components/schemas/LibrarySwitchRequest"
       responses:
         "200":
           description: Ok
@@ -370,6 +364,12 @@ paths:
         url: https://api.eagle.cool/library/switch
       tags:
         - library
+      requestBody:
+        # required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/LibrarySwitchRequest"
       responses:
         "200":
           description: Ok
