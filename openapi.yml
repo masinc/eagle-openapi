@@ -438,6 +438,9 @@ components:
       type: array
       items:
         $ref: "#/components/schemas/Palette"
+    ModificationTime:
+      type: integer
+      format: int64
     ApplicationInfoResult:
       description: Eagle application information
       type: object
@@ -486,7 +489,7 @@ components:
         folders:
           $ref: "#/components/schemas/Folders"
         modificationTime:
-          type: integer
+          $ref: "#/components/schemas/ModificationTime"
         imagesMappings:
           type: object
         tags:
@@ -526,7 +529,7 @@ components:
         folders:
           $ref: "#/components/schemas/Folders"
         modificationTime:
-          type: integer
+          $ref: "#/components/schemas/ModificationTime"
         imagesMappings:
           type: object
         tags:
@@ -610,7 +613,7 @@ components:
           items:
             type: object
         modificationTime:
-          type: integer
+          $ref: "#/components/schemas/ModificationTime"
         tags:
           $ref: "#/components/schemas/Tags"
         imageCount:
@@ -644,7 +647,7 @@ components:
           items:
             type: object
         modificationTime:
-          type: integer
+          $ref: "#/components/schemas/ModificationTime"
         tags:
           $ref: "#/components/schemas/Tags"
         password:
@@ -681,7 +684,7 @@ components:
         annotation:
           type: string
         modificationTime:
-          type: integer
+          $ref: "#/components/schemas/ModificationTime"
         folderId:
           type: string
         headers:
@@ -720,7 +723,7 @@ components:
         annotation:
           type: string
         modificationTime:
-          type: integer
+          $ref: "#/components/schemas/ModificationTime"
         headers:
           type: object
       required:
@@ -834,7 +837,7 @@ components:
         annotation:
           type: string
         modificationTime:
-          type: integer
+          $ref: "#/components/schemas/ModificationTime"
         width:
           type: integer
         height:
@@ -842,7 +845,7 @@ components:
         noThumbnail:
           type: boolean
         lastModified:
-          type: integer
+          $ref: "#/components/schemas/ModificationTime"
         palettes:
           $ref: "#/components/schemas/Palettes"
     ItemThumbnailParams:
@@ -901,13 +904,13 @@ components:
         annotation:
           type: string
         modificationTime:
-          type: integer
+          $ref: "#/components/schemas/ModificationTime"
         height:
           type: integer
         width:
           type: integer
         lastModified:
-          type: integer
+          $ref: "#/components/schemas/ModificationTime"
         palettes:
           $ref: "#/components/schemas/Palettes"
     RefreshPaletteParams:
@@ -978,7 +981,7 @@ components:
         annotation:
           type: string
         modificationTime:
-          type: integer
+          $ref: "#/components/schemas/ModificationTime"
         width:
           type: integer
         height:
@@ -986,7 +989,7 @@ components:
         noThumbnail:
           type: boolean
         lastModified:
-          type: number
+          $ref: "#/components/schemas/ModificationTime"
         palettes:
           $ref: "#/components/schemas/Palettes"
         star:
@@ -1018,7 +1021,7 @@ components:
           items:
             $ref: "#/components/schemas/LibraryInfoTagGroup"
         modificationTime:
-          type: integer
+          $ref: "#/components/schemas/ModificationTime"
         applicationVersion:
           type: string
     LibraryInfoFolder:
@@ -1035,7 +1038,7 @@ components:
           items:
             $ref: "#/components/schemas/LibraryInfoFolder"
         modificationTime:
-          type: integer
+          $ref: "#/components/schemas/ModificationTime"
         tags:
           $ref: "#/components/schemas/Tags"
         iconColor:
@@ -1056,7 +1059,7 @@ components:
         description:
           type: string
         modificationTime:
-          type: integer
+          $ref: "#/components/schemas/ModificationTime"
         conditions:
           type: array
           items:
