@@ -402,6 +402,10 @@ components:
         type: integer
       minItems: 3
       maxItems: 3
+    Images:
+      type: array
+      items:
+        type: object
     Palette:
       type: object
       properties:
@@ -457,9 +461,7 @@ components:
         name:
           type: string
         images:
-          type: array
-          items:
-            type: object
+          $ref: "#/components/schemas/Images"
         folders:
           $ref: "#/components/schemas/Folders"
         modificationTime:
@@ -499,9 +501,7 @@ components:
         name:
           type: string
         images:
-          type: array
-          items:
-            type: object
+          $ref: "#/components/schemas/Images"
         folders:
           $ref: "#/components/schemas/Folders"
         modificationTime:
@@ -585,9 +585,7 @@ components:
         passwordTips:
           type: string
         images:
-          type: array
-          items:
-            type: object
+          $ref: "#/components/schemas/Images"
         isExpand:
           type: boolean
         newFolderName:
