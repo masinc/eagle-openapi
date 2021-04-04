@@ -369,14 +369,14 @@ paths:
         content:
           application/json:
             schema:
-              $ref: "#/components/schemas/LibrarySwitchRequest"
+              $ref: "#/components/schemas/LibrarySwitchParams"
       responses:
         "200":
           description: Ok
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/LibrarySwitchResponse"
+                $ref: "#/components/schemas/LibrarySwitchResult"
 components:
   schemas:
     Tags:
@@ -1045,12 +1045,12 @@ components:
           type: array
           items:
             type: string
-    LibrarySwitchRequest:
+    LibrarySwitchParams:
       type: object
       properties:
         libraryPath:
           type: string
-    LibrarySwitchResponse:
+    LibrarySwitchResult:
       type: object
       properties:
         status:
