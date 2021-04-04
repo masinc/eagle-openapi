@@ -86,7 +86,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/UpdateFolderResult"
+                $ref: "#/components/schemas/UpdateFolderData"
   /api/folder/list:
     get:
       operationId: listFolder
@@ -566,6 +566,13 @@ components:
         - purple
         - pink
     UpdateFolderResult:
+      type: object
+      properties:
+        status:
+          type: string
+        data:
+          $ref: "#/components/schemas/UpdateFolderData"
+    UpdateFolderData:
       type: object
       properties:
         id:
