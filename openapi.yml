@@ -760,6 +760,15 @@ components:
     AddFromPathsParams:
       type: object
       properties:
+        items:
+          type: array
+          items:
+            $ref: "#/components/schemas/AddFromPathsParamsItem"
+        folderId:
+          type: string
+    AddFromPathsParamsItem:
+      type: object
+      properties:
         path:
           type: string
         name:
@@ -770,8 +779,6 @@ components:
           type: string
         tags:
           $ref: "#/components/schemas/Tags"
-        folderId:
-          type: string
       required:
         - path
         - name
